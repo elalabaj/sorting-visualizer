@@ -1,20 +1,19 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <vector>
-#include "Bar.h"
+#include <SFML/Graphics/Rect.hpp>
+#include "SortableArray.h"
+#include "Shuffler.h"
 
 class Visualizer {
 	int count;
 	sf::FloatRect panel;
-	std::vector<Bar> items;
-	sf::RenderWindow& window;
+	SortableArray items;
+	Shuffler shuffler;
 
 public:
 	Visualizer(int count, sf::FloatRect panel, sf::RenderWindow& window);
 
-	std::vector<Bar>& getItems() { return items; }
-
 	void displayItems();
+	void shuffle();
 };
 

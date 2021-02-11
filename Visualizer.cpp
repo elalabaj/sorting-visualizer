@@ -1,7 +1,10 @@
 #include "Visualizer.h"
 
+#include <SFML/Graphics/RenderWindow.hpp>
+
+
 Visualizer::Visualizer(int count, sf::FloatRect panel, sf::RenderWindow& window) 
-	: count(count), panel(panel), items(count), window(window) {
+	: count(count), panel(panel), items(count, window), shuffler(items) {
 
 	float width = panel.width / count;
 	float deltaHeight = panel.height / count;
@@ -14,9 +17,9 @@ Visualizer::Visualizer(int count, sf::FloatRect panel, sf::RenderWindow& window)
 }
 
 void Visualizer::displayItems() {
-	window.clear();
-	for (int i = 0; i < count; i++) {
-		window.draw(items[i]);
-	}
-	window.display();
+	items.displayItems();
+}
+
+void Visualizer::shuffle() {
+	shuffler.shuffle();
 }

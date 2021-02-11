@@ -1,12 +1,11 @@
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
 #include "Visualizer.h"
-#include "Shuffler.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(960, 540), "Sorting Visualizer");
 
 	Visualizer visualizer(1000, sf::FloatRect(0, 0, 960, 540), window);
-	Shuffler shuffler(visualizer);
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -17,7 +16,7 @@ int main() {
 				break;
 			case sf::Event::KeyPressed:
 				if (event.key.code == sf::Keyboard::S) {
-					shuffler.shuffle();
+					visualizer.shuffle();
 				}
 			}
 		}

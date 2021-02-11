@@ -1,14 +1,15 @@
 #include "Shuffler.h"
+#include <random>
+#include <ctime>
 
-Shuffler::Shuffler(Visualizer& visualizer) : visualizer(visualizer) {
+Shuffler::Shuffler(SortableArray& items) : items(items) {
 	srand(time(NULL));
 }
 
 void Shuffler::shuffle() {
-	std::vector<Bar>& items = visualizer.getItems();
 	for (int i = items.size() - 1; i >= 1; i--) {
 		int j = rand() % i;
 		items[i].swap(items[j]);
-		visualizer.displayItems();
+		items.displayItems();
 	}
 }

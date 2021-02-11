@@ -1,14 +1,12 @@
 #pragma once
 
-#include <random>
-#include <ctime>
-#include "Visualizer.h"
+#include "SortableArray.h"
 
 class Shuffler {
-	Visualizer& visualizer;
+	SortableArray& items;
 
 public:
-	Shuffler(Visualizer& visualizer);
+	Shuffler(SortableArray& items);
 
 	void shuffle();
 };
