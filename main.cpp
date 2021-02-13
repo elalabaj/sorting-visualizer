@@ -1,7 +1,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include "Visualizer.h"
-#include "BubbleSorter.h"
+#include "Algorithms/BubbleSorter.h"
 
 int main() {
 	sf::RenderWindow window(sf::VideoMode(960, 540), "Sorting Visualizer");

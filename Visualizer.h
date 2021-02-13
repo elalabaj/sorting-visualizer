@@ -2,8 +2,8 @@
 
 #include <SFML/Graphics/Rect.hpp>
 #include "SortableArray.h"
-#include "Shuffler.h"
-#include "Sorter.h"
+#include "Algorithms/Shuffler.h"
+#include "Algorithms/Sorter.h"
 
 class Visualizer {
 	int count;

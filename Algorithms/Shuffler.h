@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SortableArray.h"
+#include "..\SortableArray.h"
 
 class Shuffler {
 	SortableArray& items;
