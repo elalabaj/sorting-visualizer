@@ -4,6 +4,8 @@
 
 class Bar : public sf::RectangleShape {
 public:
-	void swap(Bar& other);
+	void swapWith(Bar& other);
+	bool operator>(Bar& other);
+	bool operator<(Bar& other);
 };
 

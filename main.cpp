@@ -5,7 +5,7 @@
 int main() {
 	sf::RenderWindow window(sf::VideoMode(960, 540), "Sorting Visualizer");
 
-	Visualizer visualizer(1000, sf::FloatRect(0, 0, 960, 540), window);
+	Visualizer visualizer(250, sf::FloatRect(0, 0, 960, 540), window);
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -15,12 +15,11 @@ int main() {
 				window.close();
 				break;
 			case sf::Event::KeyPressed:
-				if (event.key.code == sf::Keyboard::S) {
-					visualizer.shuffle();
-				}
+				if (event.key.code == sf::Keyboard::S) visualizer.shuffle();
+				else if (event.key.code == sf::Keyboard::Num1) visualizer.bubbleSort();
 			}
 		}
-
+		  
 		visualizer.displayItems();
 	}
 
