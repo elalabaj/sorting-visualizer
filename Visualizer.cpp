@@ -4,7 +4,7 @@
 
 
 Visualizer::Visualizer(int count, sf::FloatRect panel, sf::RenderWindow& window) 
-	: count(count), panel(panel), items(count, window), shuffler(items), bubbleSorter(items) {
+	: count(count), panel(panel), items(count, window), shuffler(items) {
 
 	float width = panel.width / count;
 	float deltaHeight = panel.height / count;
@@ -24,6 +24,6 @@ void Visualizer::shuffle() {
 	shuffler.shuffle();
 }
 
-void Visualizer::bubbleSort() {
-	bubbleSorter.sort();
+void Visualizer::sort(Sorter& sorter) {
+	sorter.sort(items);
 }

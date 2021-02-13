@@ -1,13 +1,9 @@
 #pragma once
 
-#include "SortableArray.h"
+#include "Sorter.h"
 
-class BubbleSorter {
-	SortableArray& items;
-
+class BubbleSorter : public Sorter {
 public:
-	BubbleSorter(SortableArray& items) : items(items) {};
-
-	void sort();
+	void sort(SortableArray& items);
 };
 
