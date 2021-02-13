@@ -5,6 +5,8 @@
 #include "Bar.h"
 
 class SortableArray {
+	const sf::Color defaultColor = sf::Color::White;
+	const sf::Color highlightColor = sf::Color::Red;
 	int count;
 	std::vector<Bar> items;
 	sf::RenderWindow& window;
@@ -16,5 +18,6 @@ public:
 
 	Bar& operator[](unsigned int i);
 	void displayItems();
+	void swap(int i, int j);
 };
 
