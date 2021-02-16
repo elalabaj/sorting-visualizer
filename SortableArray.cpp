@@ -1,4 +1,5 @@
 #include "SortableArray.h"
+#include <thread>
 
 Bar& SortableArray::operator[](unsigned int i) {
 	return items[i];
@@ -21,7 +22,7 @@ void SortableArray::swap(int i, int j) {
 	items[j].setOrigin(0, size1.y);
 	items[i].setFillColor(sf::Color::Red);
 	items[j].setFillColor(sf::Color::Red);
-	displayItems();
+	std::this_thread::sleep_for(std::chrono::microseconds(1));
 	items[i].setFillColor(sf::Color::White);
 	items[j].setFillColor(sf::Color::White);
 }

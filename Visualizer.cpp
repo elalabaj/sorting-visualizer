@@ -1,7 +1,7 @@
 #include "Visualizer.h"
 
 #include <SFML/Graphics/RenderWindow.hpp>
-
+#include <thread>
 
 Visualizer::Visualizer(int count, sf::FloatRect panel, sf::RenderWindow& window) 
 	: count(count), panel(panel), items(count, window), shuffler(items) {
@@ -21,9 +21,12 @@ void Visualizer::displayItems() {
 }
 
 void Visualizer::shuffle() {
-	shuffler.shuffle();
+	std::thread(&Shuffler::shuffle, &shuffler).detach();
 }
 
 void Visualizer::sort(Sorter& sorter) {
-	sorter.sort(items);
+	auto f = [this, &sorter]() -> void {
+		sorter.sort(items);
+	};
+	std::thread(f).detach();
 }
