@@ -1,10 +1,9 @@
 #include "Visualizer.h"
 
-#include <SFML/Graphics/RenderWindow.hpp>
 #include <thread>
 
-Visualizer::Visualizer(int count, sf::FloatRect panel, sf::RenderWindow& window) 
-	: count(count), panel(panel), items(count, window), shuffler(items) {
+Visualizer::Visualizer(int count, sf::FloatRect panel, sf::RenderWindow& window, sf::Text& text)
+	: count(count), panel(panel), items(count, window), shuffler(items), window(window), text(text), sorter(nullptr) {
 
 	float width = panel.width / count;
 	float deltaHeight = panel.height / count;
@@ -16,8 +15,16 @@ Visualizer::Visualizer(int count, sf::FloatRect panel, sf::RenderWindow& window)
 	}
 }
 
-void Visualizer::displayItems() {
-	items.displayItems();
+void Visualizer::draw() {
+	if (sorter != nullptr) {
+		text.setString(sorter->getName() + "\n"
+			+ std::to_string(sorter->getComparisions()) + " comparisions\n"
+			+ std::to_string(sorter->getSwaps()) + " swaps");
+	}
+	window.draw(text);
+	for (int i = 0; i < items.size(); i++) {
+		window.draw(items[i]);
+	}
 }
 
 void Visualizer::shuffle() {
@@ -25,6 +32,7 @@ void Visualizer::shuffle() {
 }
 
 void Visualizer::sort(Sorter& sorter) {
+	this->sorter = &sorter;
 	auto f = [this, &sorter]() -> void {
 		sorter.sort(items);
 	};

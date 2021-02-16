@@ -17,7 +17,6 @@ public:
 	int size() { return items.size(); }
 
 	Bar& operator[](unsigned int i);
-	void displayItems();
 	void swap(int i, int j);
 };
 

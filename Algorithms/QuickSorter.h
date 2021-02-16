@@ -11,5 +11,6 @@ public:
 private:
 	int partition(int low, int high);
 	void sort(int low, int high);
+	std::string getName() { return "quicksort"; }
 };
 

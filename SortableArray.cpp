@@ -5,14 +5,6 @@ Bar& SortableArray::operator[](unsigned int i) {
 	return items[i];
 }
 
-void SortableArray::displayItems() {
-	window.clear();
-	for (auto& item : items) {
-		window.draw(item);
-	}
-	window.display();
-}
-
 void SortableArray::swap(int i, int j) {
 	sf::Vector2f size1 = items[i].getSize();
 	sf::Vector2f size2 = items[j].getSize();

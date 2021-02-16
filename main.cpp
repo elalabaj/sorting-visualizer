@@ -7,7 +7,11 @@
 int main() {
 	sf::RenderWindow window(sf::VideoMode(960, 540), "Sorting Visualizer");
 
-	Visualizer visualizer(1000, sf::FloatRect(0, 0, 960, 540), window);
+	sf::Font font;
+	font.loadFromFile("arial.ttf");
+	sf::Text text("", font, 15);
+
+	Visualizer visualizer(2000, sf::FloatRect(0, 60, 960, 480), window, text);
 	BubbleSorter bubbleSorter;
 	QuickSorter quickSorter;
 
@@ -24,8 +28,9 @@ int main() {
 				else if (event.key.code == sf::Keyboard::Num2) visualizer.sort(quickSorter);
 			}
 		}
-		  
-		visualizer.displayItems();
+		window.clear();
+		visualizer.draw();
+		window.display();
 	}
 
 	return 0;
